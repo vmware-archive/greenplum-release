@@ -1,0 +1,13 @@
+# abort script on any command that exits with a non zero value
+set -e 
+
+  echo "Extracting archive Greenplum DB 4.3.0.0...."
+  pwd
+  tar zxvf gpdb/greenplum-db-4.3.0.0.tgz
+
+  mkdir ${BOSH_INSTALL_TARGET}/gpdb
+  mv greenplum-db-4.3.0.0 ${BOSH_INSTALL_TARGET}/gpdb
+
+  cd ${BOSH_INSTALL_TARGET}/gpdb
+  ln -s greenplum-db-4.3.0.0 greenplum-db
+

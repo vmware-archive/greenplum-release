@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+    PID_DIR=/usr/local/greenplum-db/pid
+
+    mkdir -p $PID_DIR
+    ln -s /data1/primary/gpseg<%= spec.index %> $PID_DIR

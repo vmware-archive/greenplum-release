@@ -1,0 +1,5 @@
+# abort script on any command that exits with a non zero value
+set -e
+  echo "INSTALLING EXPECT"
+  cp expect/expect-5.44.1.15-5.el6_4.x86_64.rpm ${BOSH_INSTALL_TARGET}
+  sudo rpm -iv ${BOSH_INSTALL_TARGET}/expect-5.44.1.15-5.el6_4.x86_64.rpm > ${BOSH_INSTALL_TARGET}/expect_install.log 

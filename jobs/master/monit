@@ -1,5 +1,5 @@
 check process master
-  with pidfile /var/vcap/sys/run/master/master.pid
+  with pidfile /master/data/gpseg-1/postmaster.pid
   start program "/var/vcap/jobs/master/bin/master_ctl start" with timeout 300 seconds
   stop program "/var/vcap/jobs/master/bin/master_ctl stop"
   group vcap

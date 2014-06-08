@@ -1,0 +1,8 @@
+---
+name: expect
+
+dependencies:
+- tcl
+
+files:
+- expect/expect-5.44.1.15-5.el6_4.x86_64.rpm

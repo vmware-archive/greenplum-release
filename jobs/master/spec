@@ -1,10 +1,5 @@
 ---
 name: master
-templates:
-
-packages:
----
-name: master
 
 templates:
   master_ctl: bin/master_ctl
@@ -12,7 +7,10 @@ templates:
   hostfile_gpinitsystem.erb: config/hostfile_gpinitsystem
   hosts.erb: config/hosts
   syslog_forwarder.conf.erb: config/syslog_forwarder.conf
+  run_install.sh: config/run_install.sh
 
 packages:
-- master
 - common
+- tcl
+- expect
+- greenplum-server

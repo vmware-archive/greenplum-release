@@ -1,0 +1,9 @@
+---
+name: greenplum-server
+
+dependencies:
+- common
+- expect
+
+files:
+- gpdb/greenplum-db-4.3.0.0.tgz

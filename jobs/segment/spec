@@ -1,15 +1,10 @@
 ---
 name: segment
-templates:
-
-packages:
----
-name: master
 
 templates:
-  segment_ctl: bin/segment_ctl
-  syslog_forwarder.conf.erb: config/syslog_forwarder.conf
-
+  segment_ctl.erb: bin/segment_ctl
+  syslog_forwarder.conf.erb: config/syslog_forwarder.conf.erb
+ 
 packages:
-- segment
 - common
+- greenplum-server

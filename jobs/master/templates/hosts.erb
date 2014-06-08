@@ -1,6 +1,6 @@
-<% properties.master.server_ips.each_with_index do | ip, index | %>
+<% properties.master.host.each_with_index do | ip, index | %>
 <%= ip%>
 <% end %>
-<% properties.segment.server_ips.each_with_index do | ip, index | %>
+<% properties.segment.hosts.each_with_index do | ip, index | %>
 <%= ip%>
 <% end %>
