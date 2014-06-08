@@ -1,0 +1,18 @@
+---
+name: master
+templates:
+
+packages:
+---
+name: master
+
+templates:
+  master_ctl: bin/master_ctl
+  gpinitsystem_config.erb: config/gpinitsystem_config
+  hostfile_gpinitsystem.erb: config/hostfile_gpinitsystem
+  hosts.erb: config/hosts
+  syslog_forwarder.conf.erb: config/syslog_forwarder.conf
+
+packages:
+- master
+- common

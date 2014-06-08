@@ -1,0 +1,10 @@
+#!/bin/bash -e
+
+BIN_DIR=/var/vcap/packages/master/greenplum-db/bin
+RUN_DIR=/var/vcap/sys/run/greenplum-db
+LOG_DIR=/var/vcap/sys/log/greenplum-db
+PIDFILE=$RUN_DIR/master.pid
+STDOUTLOG=$LOG_DIR/master.stdout.log
+STDERRLOG=$LOG_DIR/master.stderr.log
+
+# EMPTY SINCE THE MASTER IS RESPONSIBLE FOR STARTING/STOPING SEGMENTS

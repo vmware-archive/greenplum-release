@@ -1,0 +1,15 @@
+---
+name: segment
+templates:
+
+packages:
+---
+name: master
+
+templates:
+  segment_ctl: bin/segment_ctl
+  syslog_forwarder.conf.erb: config/syslog_forwarder.conf
+
+packages:
+- segment
+- common

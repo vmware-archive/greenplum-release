@@ -1,0 +1,50 @@
+#!/bin/bash -e
+
+BIN_DIR=/var/vcap/packages/master/greenplum-db/bin
+RUN_DIR=/var/vcap/sys/run/greenplum-db
+LOG_DIR=/var/vcap/sys/log/greenplum-db
+DATA_DIR=/data1
+PIDFILE=$RUN_DIR/master.pid
+STDOUTLOG=$LOG_DIR/master.stdout.log
+STDERRLOG=$LOG_DIR/master.stderr.log
+
+
+source /var/vcap/packages/common/utils.sh  
+case $1 in
+  start)
+
+
+    mkdir -p $RUN_DIR
+    mkdir -p $LOG_DIR
+    
+    if ! test -d ${DATA_DIR}; then
+	PROP_DIR=`dirname "$0"`
+	source /usr/local/greenplum-db/greenplum_path.sh
+	gpseginstall -f ${PROP_DIR}/hosts -u gpadmin -p gpadmin >> ${LOG_DIR)/gpseginstall.log
+        su - gpadmin
+	gpinitsystem -a -c $PROP_DIR/gpinitsystem_config -h $PROP_DIR/hostfile_gpinitsystem -l $LOG_DIR
+    fi
+
+    pid_guard $PIDFILE "greenplum"
+
+    su - gpadmin
+    gpstart -a -l ${LOG_DIR} -q
+
+    ;;
+
+  stop)
+    
+    # first try a graceful shutdown
+    gpstop -a -l ${LOG_DIR} -M fast
+    gfsh -e "connect --locator=$LOCATORIPADDR[$PORT]" -e "stop locator --name=$LOCATORNAME"
+    # and if that doesn't work, kill the process
+    kill_and_wait $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: master_ctl {start|stop}"
+
+    ;;
+
+esac
